@@ -1,0 +1,62 @@
+import re
+
+class Member:
+    def __init__(self, name, role):
+        if name == '':
+            raise ValueError()
+        self.name = name
+        self.role = role
+    def show_role(self):
+        return self.role
+
+class Lion(Member):
+    def __init__(self, name, track, number):
+        match = re.fullmatch(r'(\d+)기', number)
+        if not match:
+            raise ValueError()
+        super().__init__(name, 'Lion')
+        self.track = track
+        self.number = number
+
+class Staff(Member):
+    def __init__(self, name):
+        super().__init__(name, 'Staff')
+
+lionList = []
+staffList = []
+
+while True:
+    print('📌 기능을 선택하세요')
+    print('1️⃣  아기사자 등록')
+    print('2️⃣  운영진 등록')
+    print('3️⃣  전체 출력')
+    print('4️⃣  종료')
+
+    num = input('👉 선택: ')
+
+    match num:
+        case '1':
+            name = input('🦁 이름: ')
+            track = input('📚 트랙: ')
+            number = input('🎓 기수: ')
+            newLion = Lion(name, track, number)
+            lionList.append(newLion)
+            print('✅ 아기사자가 등록되었습니다.')
+            print()
+        case '2':
+            name = input('🧑‍🏫 이름: ')
+            newStaff = Staff(name)
+            staffList.append(newStaff)
+            print('✅ 운영진이 등록되었습니다.')
+            print()
+        case '3':
+            print()
+            print('📋 멤버 목록')
+            for lion in lionList:
+                print(f'- 🦁 아기사자 : {lion.name} | {lion.track} | {lion.number}')
+            for staff in staffList:
+                print(f'- 🧑‍🏫 운영진 : {staff.name} | 운영진')
+                print()
+        case '4':
+            print('👋 프로그램을 종료합니다.')
+            break
