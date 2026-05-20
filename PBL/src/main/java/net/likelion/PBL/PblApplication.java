@@ -10,12 +10,12 @@ public class PblApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(PblApplication.class, args);
-		
+
 		MemberService memberService = context.getBean(MemberService.class);
 
-		System.out.println("=====================================");
-		System.out.println("수동 확인: " + memberService.getTestMessage());
-		System.out.println("=====================================");
+		//System.out.println("=====================================");
+		//System.out.println("수동 확인: " + memberService.getTestMessage());
+		//System.out.println("=====================================");
 	}
 
 }
