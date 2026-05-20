@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: week_6
+    
+server:
+  port: 8080
+
+logging:
+  level:
+    net.likelion: DEBUG
